@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<title>Chrome Tab</title>
+
+	<link rel="stylesheet" href="main.css">
+
+</head>
+<body>
+	
+	<div class="wrapper">
+
+		<div class="date-time-wrapper">
+
+			<img src="images/clock-icon.png" alt="Clock Icon">
+			<span id="date-time"></span>
+
+		</div> <!-- end date-time-wrapper -->
+
+		<div class="primary-link-wrapper">
+
+			<section class="primary-link blue-tile">
+				
+				<a href="https://mail.google.com/" target="_blank"><img src="images/gmail-icon.png" alt="Gmail Icon"><span>Gmail</span></a>
+
+			</section>
+
+			<section class="primary-link green-tile">
+				
+				<a href="https://www.google.com/contacts" target="_blank"><img src="images/contacts-icon.png" alt="Contacts Icon"><span>Google Contacts</span></a>
+
+			</section>
+
+			<section class="primary-link yellow-tile">
+				
+				<a href="https://www.google.com/calendar" target="_blank"><img src="images/calendar-icon.png" alt="Calendar Icon"><span>Google Calendar</span></a>
+
+			</section>
+
+			<section class="primary-link red-tile">
+				
+				<a href="https://drive.google.com/" target="_blank"><img src="images/drive-icon.png" alt="Drive Icon"><span>Google Drive</span></a>
+
+			</section>
+
+			<section class="primary-link blue-tile">
+				
+				<a href="https://hangouts.google.com/" target="_blank"><img src="images/hangouts-icon.png" alt="Hangouts Icon"><span>Google Hangouts</span></a>
+
+			</section>
+
+			<section class="primary-link yellow-tile">
+				
+				<a href="https://www.google.com/maps" target="_blank"><img src="images/maps-icon.png" alt="Maps Icon"><span>Google Maps</span></a>
+
+			</section>
+
+			<hr>
+
+			<span class="more">More</span>
+
+			<div class="secondary-link-wrapper">
+
+				<a href="https://www.google.com/docs" target="_blank"><img src="images/docs-icon.png" alt="Docs Icon"><span>Docs</span></a>
+
+				<a href="https://www.google.com/sheets" target="_blank"><img src="images/sheets-icon.png" alt="Sheets Icon"><span>Sheets</span></a>
+
+				<a href="https://www.google.com/slides" target="_blank"><img src="images/slides-icon.png" alt="Slides Icon"><span>Slides</span></a>
+
+				<a href="https://www.google.com/forms" target="_blank"><img src="images/forms-icon.png" alt="Forms Icon"><span>Forms</span></a>
+
+				<a href="https://docs.google.com/drawings" target="_blank"><img src="images/drawings-icon.png" alt="Drawings Icon"><span>Drawings</span></a>
+
+				<a href="https://keep.google.com" target="_blank"><img src="images/keep-icon.png" alt="Keep Icon"><span>Keep</span></a>
+
+			</div> <!-- end secondary-link-wrapper -->
+
+		</div> <!-- end primary-link-wrapper -->
+
+	</div> <!-- end wrapper -->
+
+	<script>
+
+		function dateTime() {
+			// Date
+			var currentTime = new Date();
+			var month = currentTime.getMonth() + 1;
+			var day = currentTime.getDate();
+			var dayOfWeek = currentTime.getDay();
+			var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+			var year = currentTime.getFullYear();
+
+			// Time
+			var hours = currentTime.getHours();
+			var minutes = currentTime.getMinutes();
+			var am_pm = "AM";
+
+			if (minutes < 10) {
+				minutes = "0" + minutes;
+			}
+
+			if (hours > 11) {
+				am_pm = "PM";
+			}
+
+			if (hours > 12) {
+				hours = hours - 12;
+			}
+
+			// Display Date and Time
+			document.getElementById("date-time").innerHTML = hours + ":" + minutes + " " + am_pm + "<br>" + days[dayOfWeek] + " "  + month + "/" + day + "/" + year;
+		} // end function dateTime
+
+		// Run function dateTime
+			dateTime();
+
+		// Refresh Date and Time Every 60 Seconds
+			setInterval(dateTime, 60000);
+
+	</script>
+
+</body>
+</html>
