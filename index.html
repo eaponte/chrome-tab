@@ -26,13 +26,13 @@
 
 			<section class="search-box">
 
-				<form action="https://www.google.com/" target="_blank" method="get">
+				<form>
 
 					<span class="g-icon"><img src="images/google-icon.png" alt="Google Icon"></span>
 
-					<input type="text" name="q" placeholder="Search...">
+					<input type="text" name="q" id="search-query" placeholder="Search...">
 
-					<button type="submit"><img src="images/search-white-icon.png" alt="Search" title="Search Google"></button>
+					<button type="submit" id="submit-query"><img src="images/search-white-icon.png" alt="Search" title="Search Google"></button>
 
 				</form>
 
@@ -100,35 +100,42 @@
 
 	<script>
 
-		function dateTime() {
-			// Date
-			var currentTime = new Date();
-			var month = currentTime.getMonth() + 1;
-			var day = currentTime.getDate();
-			var dayOfWeek = currentTime.getDay();
-			var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-			var year = currentTime.getFullYear();
+		// Search function
+			document.getElementById("submit-query").onclick = function() {
+				var q = document.getElementById("search-query").value;
+				window.open("https://www.google.com/#q=" + q, "_blank");
+			};
 
-			// Time
-			var hours = currentTime.getHours();
-			var minutes = currentTime.getMinutes();
-			var am_pm = "AM";
+		// Date and Time
+			function dateTime() {
+				// Date
+				var currentTime = new Date();
+				var month = currentTime.getMonth() + 1;
+				var day = currentTime.getDate();
+				var dayOfWeek = currentTime.getDay();
+				var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+				var year = currentTime.getFullYear();
 
-			if (minutes < 10) {
-				minutes = "0" + minutes;
-			}
+				// Time
+				var hours = currentTime.getHours();
+				var minutes = currentTime.getMinutes();
+				var am_pm = "AM";
 
-			if (hours > 11) {
-				am_pm = "PM";
-			}
+				if (minutes < 10) {
+					minutes = "0" + minutes;
+				}
 
-			if (hours > 12) {
-				hours = hours - 12;
-			}
+				if (hours > 11) {
+					am_pm = "PM";
+				}
 
-			// Display Date and Time
-			document.getElementById("date-time").innerHTML = hours + ":" + minutes + " " + am_pm + "<br>" + days[dayOfWeek] + " "  + month + "/" + day + "/" + year;
-		} // end function dateTime
+				if (hours > 12) {
+					hours = hours - 12;
+				}
+
+				// Display Date and Time
+				document.getElementById("date-time").innerHTML = hours + ":" + minutes + " " + am_pm + "<br>" + days[dayOfWeek] + " "  + month + "/" + day + "/" + year;
+			} // end function dateTime
 
 		// Run function dateTime
 			dateTime();
